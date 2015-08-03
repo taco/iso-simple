@@ -3,7 +3,7 @@ import { RECEIVE_MEALS } from '../actionTypes'
 
 export default Store({
 	getInitialState() {
-			return toImmutable([])
+			return toImmutable({})
 		},
 
 		initialize() {

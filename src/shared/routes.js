@@ -3,8 +3,8 @@ import React from "react";
 
 import AppHandler from "./components/AppHandler";
 import ListHandler from "./components/ListHandler";
-import CreateHandler from "./components/ListHandler";
-import EditHandler from "./components/ListHandler";
+import CreateHandler from "./components/CreateHandler";
+import EditHandler from "./components/EditHandler";
 
 export default (  
   <Route>

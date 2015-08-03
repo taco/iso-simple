@@ -1,11 +1,11 @@
 export default {
 	getMeals(cb) {
 		cb([{
-			id: 1,
-			name: 'meal 1'
+			id: 5,
+			name: 'meal 5'
 		}, {
-			id: 2,
-			name: 'meal 2'
+			id: 99,
+			name: 'meal 99'
 		}])
 	}
 }

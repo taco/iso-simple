@@ -1,5 +1,5 @@
 import { Reactor } from 'nuclear-js'
-import MealStore from '../flux/stores/MealStore'
+import MealStore from './stores/MealStore'
 
 const reactor = new Reactor({
 	debug: true
