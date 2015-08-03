@@ -13,7 +13,6 @@ export default Store({
 
 
 function receiveMeals(state, { meals }) {
-	console.log('receiveMeals')
 	let newMeals = toImmutable(meals)
 		.toMap()
 		.mapKeys((k, v) => v.get('id'))
