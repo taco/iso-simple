@@ -16,5 +16,5 @@ function receiveMeals(state, { meals }) {
 	let newMeals = toImmutable(meals)
 		.toMap()
 		.mapKeys((k, v) => v.get('id'))
-	return state.merge(newMeals)
+	return newMeals
 }

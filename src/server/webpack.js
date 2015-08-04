@@ -7,7 +7,7 @@ var server = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   quiet: true,
   hot: true,
-  stats: { colors: true },
+  stats: { colors: true }
 });
 
-server.listen(8080, "localhost", function() {});  
+server.listen(8081, "localhost", function() {});

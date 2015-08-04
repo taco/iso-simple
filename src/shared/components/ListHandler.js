@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react'
+import { Map } from 'immutable'
 import reactor from '../../flux/reactor'
 import actions from '../../flux/actions'
 import getters from '../../flux/getters'
@@ -22,14 +23,15 @@ export default React.createClass({
     	<div>
     		Meals?
     		{
-    			this.state.meals.map(function(m) {
-    			var meal = m.toJS()
-    			return (
-    				<div>
-    					{meal.id} - {meal.name}
-    				</div>
-    			);
-    		})}
+          this.state.meals.toArray().map(meal => {
+            var key = 'meal-' + meal.get('id')
+            return (
+              <div key={ key }>
+                { meal.get('name') }
+              </div>
+            )
+          })
+        }
     	</div>
     );
   }
