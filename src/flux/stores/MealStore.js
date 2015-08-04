@@ -3,14 +3,13 @@ import { RECEIVE_MEALS } from '../actionTypes'
 
 export default Store({
 	getInitialState() {
-			return toImmutable({})
-		},
+		return toImmutable({})
+	},
 
-		initialize() {
-			this.on(RECEIVE_MEALS, receiveMeals)
-		}
+	initialize() {
+		this.on(RECEIVE_MEALS, receiveMeals)
+	}
 })
-
 
 function receiveMeals(state, { meals }) {
 	var newMeals = toImmutable(meals)

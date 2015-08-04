@@ -1,15 +1,13 @@
-/** @jsx */
-import React from "react";
-import { Link } from "react-router";
+import React from 'react'
+import Header from './header'
 
 export default class AppHandler extends React.Component {  
-  render() {
-    return <div>
-	    	Hello App Handler
-
-	    	<Link to="/list">Go to list</Link>
-
-	    	<Link to="/create">Go to create</Link>
-    	</div>;
-  }
+	render() {
+		return (
+			<div>
+				<Header />
+				<h2>Welcome!</h2>
+			</div>
+		)
+	}
 }

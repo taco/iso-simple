@@ -18,19 +18,22 @@
     "babel": "^5.8.20",
     "babel-core": "^5.8.20",
     "babel-loader": "^5.3.2",
-    "express": "^4.13.2",
-    "jade": "^1.11.0",
     "jsdom": "^3.1.2",
     "mocha": "^2.2.5",
     "nodemon": "^1.4.0",
-    "react": "^0.13.3",
-    "react-hot-loader": "^1.2.8",
-    "react-router": "^0.13.3",
     "webpack": "^1.10.5",
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "express": "^4.13.2",
     "immutable": "^3.7.4",
-    "nuclear-js": "^1.1.1"
+    "jade": "^1.11.0",
+    "node-rest-client": "^1.5.1",
+    "nuclear-js": "^1.1.1",
+    "react": "^0.13.3",
+    "react-hot-loader": "^1.2.8",
+    "react-router": "^0.13.3",
+    "url": "^0.10.3",
+    "xhr-browserify": "0.0.4"
   }
 }

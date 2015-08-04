@@ -1,5 +1,7 @@
 const meals = ['meals']
+const load = ['load']
 
 export default {
-	meals
+	meals,
+	load
 }

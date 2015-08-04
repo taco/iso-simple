@@ -1,15 +1,17 @@
 import React from 'react'
-import { Map } from 'immutable'
+import Header from './header'
 import reactor from '../../flux/reactor'
 import actions from '../../flux/actions'
 import getters from '../../flux/getters'
 
 
 
-actions.fetchMeals();
-
 export default React.createClass({  
   mixins: [reactor.ReactMixin],
+
+  componentWillMount() {
+    actions.fetchMeals()
+  },
 
   getDataBindings() {
   	return {
@@ -18,20 +20,22 @@ export default React.createClass({
   },
 
   render() {
-
     return (
+
     	<div>
-    		Meals?
-    		{
-          this.state.meals.toArray().map(meal => {
-            var key = 'meal-' + meal.get('id')
-            return (
-              <div key={ key }>
-                { meal.get('name') }
-              </div>
-            )
-          })
-        }
+        <Header />
+        <div>
+      		<h2>Meals</h2>
+      		{
+            this.state.meals.toArray().map(meal => {
+              return (
+                <div key={ meal.get('id') }>
+                  { meal.get('name') }
+                </div>
+              )
+            })
+          }
+        </div>
     	</div>
     );
   }
