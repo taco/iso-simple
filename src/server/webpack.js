@@ -5,7 +5,7 @@ import config from '../../webpack.config.dev';
 var server = new WebpackDevServer(webpack(config), {
   // webpack-dev-server options
   publicPath: config.output.publicPath,
-  //quiet: true,
+  quiet: true,
   hot: true,
   stats: { colors: true }
 });

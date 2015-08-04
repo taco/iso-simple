@@ -1,20 +1,29 @@
 import express from 'express';
 import React from 'react';
 import Router from 'react-router'
-import { ListMeal } from './api'
+import { ListMeal, CreateMeal } from './api'
 import reactor from '../flux/reactor'
 import { load as loadGetter } from '../flux/getters'
+import bodyParser from 'body-parser'
+import routes from '../shared/routes'
+
 const app = express();
 
-app.set('views', './views');
-app.set('view engine', 'jade');
 
-import routes from '../shared/routes';
+app.set('views', './views')
+app.set('view engine', 'jade')
 
-app.get('/api/meals', function(req, res) {
-	ListMeal(function(data) {
-		res.json(data)
-	});
+//app.use(bodyParser.json())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({exntended: true}))
+
+
+app.get('/api/meals', (req, res) => {
+	ListMeal().then(data => res.json(data));
+});
+
+app.post('/api/meals', (req, res) => {
+	CreateMeal(req.body).then(data => res.json(data));
 });
 
 app.get('/*', function(req, res) {

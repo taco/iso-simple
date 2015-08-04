@@ -1,19 +1,28 @@
 import api from '../shared/api'
 import reactor from './reactor'
-import { RECEIVE_MEALS, LOAD_INCREMENT, LOAD_DECREMENT } from './actionTypes'
+import { RECEIVE_MEALS, LOAD_INCREMENT, LOAD_DECREMENT, CREATE_MEAL } from './actionTypes'
 
 export default {
 	fetchMeals,
 	loadIncrement,
-	loadDecrement
+	loadDecrement,
+	createMeal
 }
 
 function fetchMeals() {
-	loadIncrement()
-	api.getMeals(meals => {
-		reactor.dispatch(RECEIVE_MEALS, { meals })
-		loadDecrement()
+	return new Promise((fulfill, reject) => {
+		loadIncrement()
+		api.getMeals()
+			.then(meals => {
+				reactor.dispatch(RECEIVE_MEALS, { meals })
+				loadDecrement()
+				fulfill()
+			})
 	})
+}
+
+function createMeal(meal) {
+	reactor.dispatch(CREATE_MEAL, meal)
 }
 
 function loadIncrement() {

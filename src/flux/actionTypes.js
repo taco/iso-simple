@@ -5,5 +5,6 @@ export default keyMirror({
     CREATE_MEAL: null,
     REMOVE_MEAL: null,
     LOAD_INCREMENT: null,
-    LOAD_DECREMENT: null
+    LOAD_DECREMENT: null,
+    MEAL_CREATED: null
 })
