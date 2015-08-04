@@ -1,7 +1,7 @@
-import express from "express";
-import React from "react";
-import Router from "react-router"
-import { ListMeal } from "./api"
+import express from 'express';
+import React from 'react';
+import Router from 'react-router'
+import { ListMeal } from './api'
 import reactor from '../flux/reactor'
 import { load as loadGetter } from '../flux/getters'
 const app = express();
@@ -9,7 +9,7 @@ const app = express();
 app.set('views', './views');
 app.set('view engine', 'jade');
 
-import routes from "../shared/routes";
+import routes from '../shared/routes';
 
 app.get('/api/meals', function(req, res) {
 	ListMeal(function(data) {
@@ -36,6 +36,7 @@ app.get('/*', function(req, res) {
 			}
 			clearInterval(interval)
 			go()
+			
 		}, 1)
 	});
 });

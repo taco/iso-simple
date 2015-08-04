@@ -10,7 +10,8 @@
     "server": "nodemon --debug lib/server/server",
     "start": "npm run watch-js & npm run dev-server & npm run server",
     "build": "npm run clean && ./node_modules/.bin/babel src -d lib --experimental",
-    "test": "mocha --compilers js:babel/register --recursive"
+    "test": "mocha --compilers js:babel/register --recursive",
+    "lint": " webpack --config webpack.config.dev.js && rm -rf public"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,8 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "eslint": "^1.0.0",
+    "eslint-loader": "^0.14.2",
     "express": "^4.13.2",
     "immutable": "^3.7.4",
     "jade": "^1.11.0",

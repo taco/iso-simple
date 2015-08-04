@@ -1,6 +1,5 @@
-/** @jsx */
-import React from "react";
-import { Link } from "react-router";
+import React from 'react'
+import { Link } from 'react-router'
 import Header from './header'
 
 export default class CreateHandler extends React.Component {  
