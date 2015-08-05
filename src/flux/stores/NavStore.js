@@ -20,7 +20,6 @@ function createMeal(state, meal) {
 	return state.set('creating', true)
 }
 
-function mealCreated(state, meal) {
-	
+function mealCreated(state, { meal }) {
 	return state.set('meal', meal).set('creating', false)
 }

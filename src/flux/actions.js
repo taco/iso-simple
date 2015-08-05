@@ -14,8 +14,8 @@ function fetchMeals() {
 	return new Promise((fulfill, reject) => {
 		loadIncrement()
 		api.getMeals()
-			.then(meals => {
-				reactor.dispatch(RECEIVE_MEALS, { meals })
+			.then(items => {
+				reactor.dispatch(RECEIVE_MEALS, { items })
 				loadDecrement()
 				fulfill()
 			})
@@ -31,10 +31,10 @@ function createMeal(meal) {
 	})
 }
 
-function mealCreated(meal) {
-	reactor.dispatch(MEAL_CREATED, meal)
+function mealCreated(data) {
+	reactor.dispatch(MEAL_CREATED, data)
 	if (mealPromise && mealPromise.fulfill) {
-		mealPromise.fulfill(meal)
+		mealPromise.fulfill(data)
 	}
 }
 

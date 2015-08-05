@@ -1,23 +1,25 @@
 import React from 'react'
 import Header from './header'
-import { ReactMixin } from '../../flux/reactor'
+import { ReactMixin as ReactorMixin } from '../../flux/reactor'
 import { fetchMeals } from '../../flux/actions'
 import { meals as mealGetter } from '../../flux/getters'
 
 
 
 export default React.createClass({  
-  mixins: [ReactMixin],
-
-  componentWillMount() {
-    fetchMeals()
-  },
+  mixins: [ReactorMixin],
 
   getDataBindings() {
-  	return {
-  		meals: mealGetter
-  	}
+    return {
+      meals: mealGetter
+    }
   },
+
+  componentWillMount() {
+    if (!this.state.meals.size) {
+      fetchMeals()
+    }
+  },  
 
   render() {
     return (
@@ -27,11 +29,13 @@ export default React.createClass({
     		<h2>Meals</h2>
         <table>
           <thead>
-            <th>Name</th>
-            <th>Rating</th>
-            <th>Price</th>
-            <th>Minimum</th>
-            <th>Description</th>
+            <tr>
+              <th>Name</th>
+              <th>Rating</th>
+              <th>Price</th>
+              <th>Minimum</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
       		{

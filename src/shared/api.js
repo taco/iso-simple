@@ -24,7 +24,7 @@ export default {
 		return new Promise((fulfill, reject) => {
 			client.post(`${ HOST }/meals`, args, data => {
 				var parse = JSON.parse(data.toString('utf-8'))
-				setTimeout(() => fulfill(parse.meal), 5000)
+				setTimeout(() => fulfill(parse), 5000)
 			})
 		})
 	}

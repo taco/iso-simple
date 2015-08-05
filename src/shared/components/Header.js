@@ -26,9 +26,9 @@ export default React.createClass({
 		return (
 			<div>
 				<h1>Meal Browser</h1>
-				<Link to="/">Home</Link>&nbsp;-&nbsp;
-				<Link to="/list">List</Link>&nbsp;-&nbsp;
-				<Link to="/create">Create</Link>&nbsp;-&nbsp;
+				<Link to="/">Home</Link> - 
+				<Link to="/list">List</Link> - 
+				<Link to="/create">Create</Link> - 
 				{activeMeal}
 			</div>
 		)

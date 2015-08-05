@@ -23,10 +23,5 @@ module.exports = {
     loaders: [
       { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?experimental', 'eslint-loader'], exclude: /node_modules/ }
     ]
-  },
-  eslint: {
-    ecmaFeatures: {
-      modules: true
-    }
   }
 }
