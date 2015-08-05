@@ -1,6 +1,7 @@
 import { Reactor } from 'nuclear-js'
 import MealStore from './stores/MealStore'
 import LoadStore from './stores/LoadStore'
+import NavStore from './stores/NavStore'
 
 const reactor = new Reactor({
 	debug: true
@@ -8,7 +9,8 @@ const reactor = new Reactor({
 
 reactor.registerStores({
   'meals': MealStore,
-  'load': LoadStore
+  'load': LoadStore,
+  'nav': NavStore
 })
 
 export default reactor

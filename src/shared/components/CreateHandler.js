@@ -1,11 +1,13 @@
 import React from 'react'
 import LinkedStateMixin from 'react/lib/LinkedStateMixin'
-import { Link } from 'react-router'
+import { Link, Navigation } from 'react-router'
 import Header from './header'
+import { ReactMixin } from '../../flux/reactor'
 import { createMeal } from '../../flux/actions'
+import { nav as navGetter } from '../../flux/getters'
 
 export default React.createClass({  
-	mixins: [LinkedStateMixin],
+	mixins: [ReactMixin, LinkedStateMixin, Navigation],
 
 	getInitialState() {
 		return {
@@ -17,11 +19,31 @@ export default React.createClass({
 		}
 	},
 
+	getDataBindings() {
+		return {
+			nav: navGetter
+		}
+	},
+
 	handleClickCreate() {
-		createMeal(this.state)
+		createMeal({
+			name: this.state.name,
+			description: this.state.description,
+			price: this.state.price,
+			min: this.state.min,
+			rating: this.state.rating
+		}).then(() => this.transitionTo('/list'))
 	},
 
 	render() {
+		var saveButton
+
+		if (this.state.nav.get('creating')) {
+			saveButton = <button disabled>Saving meal...</button>
+		} else {
+			saveButton = <button onClick={this.handleClickCreate}>Create Meal</button>
+		}
+
 		return (
 			<div>
 				<Header />
@@ -50,7 +72,7 @@ export default React.createClass({
 					<input type="number" min="0" max="5" valueLink={this.linkState('rating')} required />
 				</div>
 
-				<button onClick={this.handleClickCreate}>Create Meal</button>
+				{ saveButton }
 			</div>
 		)
 	}

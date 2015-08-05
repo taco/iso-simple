@@ -1,5 +1,6 @@
 import { Store, toImmutable } from 'nuclear-js'
-import { RECEIVE_MEALS, CREATE_MEAL, MEAL_CREATED } from '../actionTypes'
+import { RECEIVE_MEALS, CREATE_MEAL } from '../actionTypes'
+import { mealCreated } from '../actions'
 import reactor from '../reactor'
 import api from '../../shared/api'
 
@@ -16,14 +17,14 @@ export default Store({
 
 function receiveMeals(state, { meals }) {
 	var newMeals = toImmutable(meals)
-		.toMap()
+		.toOrderedMap()
 		.mapKeys((k, v) => v.get('id'))
 	return newMeals
 }
 
 function createMeal(state, meal) {
 	api.createMeal(meal)
-		.then(meal => reactor.dispatch(MEAL_CREATED, meal))
+		.then(meal => mealCreated(meal))
 
 	return state
 }

@@ -1,21 +1,21 @@
 import React from 'react'
 import Header from './header'
-import reactor from '../../flux/reactor'
-import actions from '../../flux/actions'
-import getters from '../../flux/getters'
+import { ReactMixin } from '../../flux/reactor'
+import { fetchMeals } from '../../flux/actions'
+import { meals as mealGetter } from '../../flux/getters'
 
 
 
 export default React.createClass({  
-  mixins: [reactor.ReactMixin],
+  mixins: [ReactMixin],
 
   componentWillMount() {
-    actions.fetchMeals()
+    fetchMeals()
   },
 
   getDataBindings() {
   	return {
-  		meals: getters.meals
+  		meals: mealGetter
   	}
   },
 
@@ -24,18 +24,31 @@ export default React.createClass({
 
     	<div>
         <Header />
-        <div>
-      		<h2>Meals</h2>
+    		<h2>Meals</h2>
+        <table>
+          <thead>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Price</th>
+            <th>Minimum</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
       		{
             this.state.meals.toArray().map(meal => {
               return (
-                <div key={ meal.get('id') }>
-                  { meal.get('name') }
-                </div>
+                <tr key={ meal.get('id') }>
+                  <td>{ meal.get('name') }</td>
+                  <td>{ meal.get('rating') }</td>
+                  <td>{ meal.get('price') }</td>
+                  <td>{ meal.get('min') }</td>
+                  <td>{ meal.get('description') } </td>
+                </tr>
               )
             })
           }
-        </div>
+          </tbody>
+        </table>
     	</div>
     )
   }

@@ -1,12 +1,13 @@
 import api from '../shared/api'
 import reactor from './reactor'
-import { RECEIVE_MEALS, LOAD_INCREMENT, LOAD_DECREMENT, CREATE_MEAL } from './actionTypes'
+import { RECEIVE_MEALS, LOAD_INCREMENT, LOAD_DECREMENT, CREATE_MEAL, MEAL_CREATED } from './actionTypes'
 
 export default {
 	fetchMeals,
 	loadIncrement,
 	loadDecrement,
-	createMeal
+	createMeal,
+	mealCreated
 }
 
 function fetchMeals() {
@@ -21,8 +22,20 @@ function fetchMeals() {
 	})
 }
 
+var mealPromise
+
 function createMeal(meal) {
-	reactor.dispatch(CREATE_MEAL, meal)
+	return new Promise((fulfill, reject) => {
+		reactor.dispatch(CREATE_MEAL, meal)
+		mealPromise = { fulfill, reject }
+	})
+}
+
+function mealCreated(meal) {
+	reactor.dispatch(MEAL_CREATED, meal)
+	if (mealPromise && mealPromise.fulfill) {
+		mealPromise.fulfill(meal)
+	}
 }
 
 function loadIncrement() {
