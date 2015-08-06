@@ -20,7 +20,7 @@ function CreateMeal(payload) {
 	}
 	return new Promise((fulfill, reject) => {
 		client.post('http://localhost:3001/meals', args, data => {
-			fulfill(JSON.parse(data.toString('utf-8')))
+			fulfill(data)
 		})
 	})
 }

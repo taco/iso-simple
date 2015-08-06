@@ -16,6 +16,10 @@ const prefetch = {
 
 function run(routes, req, res) {
 
+	res.render('index', {content: ''})
+
+	return
+
 	if (prefetch[req.url]) {
 		prefetch[req.url]()
 			.then(() => {
